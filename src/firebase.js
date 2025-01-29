@@ -24,9 +24,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
 
-export { auth, provider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup };
+export { auth, googleProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup };
 
 // firebase.js
 // import firebase from 'firebase/compat/app'

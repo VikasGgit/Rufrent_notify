@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 
-// import LoginSignup from "./components/LoginSignup";
+import LoginSignup from "./components/LoginSignup";
 // import Payment from "./components/Payment";
 // import GoogleLogin from "./components/GoogleLogin";
-import EmailVerification from './components/EmailVerification'
+// import EmailVerification from './components/EmailVerification'
 // import LoginSignup from "./components/LoginSignup";
 
 const PrivateRoute = ({ children }) => {
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<EmailVerification/>} />
+        <Route path="/" element={<LoginSignup/>} />
         {/* <Route 
           path="/payment" 
           element={
