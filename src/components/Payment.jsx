@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Payment = () => {
-  const [amount, setAmount] = useState(500.98); // Default amount
+  const [amount, setAmount] = useState(1); // Default amount
 
   const handlePayment = async () => {
     try {
@@ -22,7 +22,7 @@ const Payment = () => {
 
       // 2️⃣ Initialize Razorpay Payment
       const options = {
-        key: "rzp_test_v521ErjMrzxocB",
+        key: "rzp_live_ORwuB2Pzek0Akl",
         amount: orderData.order.amount,
         currency: orderData.order.currency,
         name: "Vikas Gupta",

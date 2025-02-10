@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 
 
 import LoginSignup from "./components/LoginSignup";
+import Payment from "./components/Payment";
+import NotificationComponent from "./components/Notification";
+
 // import Payment from "./components/Payment";
 // import GoogleLogin from "./components/GoogleLogin";
 // import EmailVerification from './components/EmailVerification'
@@ -15,20 +18,13 @@ const PrivateRoute = ({ children }) => {
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginSignup/>} />
-        {/* <Route 
-          path="/payment" 
-          element={
-            <PrivateRoute>
-             <Payment/>
-            </PrivateRoute>
-          } 
-        /> */}
-   
-      </Routes>
-    </Router>
+   <>
+    <NotificationComponent userId="1" /> {/* Replace with your user ID */}
+    <NotificationComponent userId="2" /> {/* Replace with your user ID */}
+    <NotificationComponent userId="3" /> {/* Replace with your user ID */}
+    <NotificationComponent userId="4" /> {/* Replace with your user ID */}
+     
+   </>
   );
 };
 
