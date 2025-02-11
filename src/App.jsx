@@ -19,11 +19,7 @@ const PrivateRoute = ({ children }) => {
 const App = () => {
   return (
    <>
-    <NotificationComponent userId="1" /> {/* Replace with your user ID */}
-    <NotificationComponent userId="2" /> {/* Replace with your user ID */}
-    <NotificationComponent userId="3" /> {/* Replace with your user ID */}
-    <NotificationComponent userId="4" /> {/* Replace with your user ID */}
-     
+   <Payment/>
    </>
   );
 };

@@ -1,7 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Payment = () => {
   const [amount, setAmount] = useState(1); // Default amount
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => console.log("Razorpay script loaded!");
+    document.body.appendChild(script);
+  }, []);
+
 
   const handlePayment = async () => {
     try {
@@ -9,7 +17,7 @@ const Payment = () => {
       const orderResponse = await fetch("http://localhost:5000/api/payments/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount, currency: "INR" , user_id: 1}),
+        body: JSON.stringify({ T_amount:amount, currency:"INR", Inv_Id:"hello124"}),
       });
 
       const orderData = await orderResponse.json();
@@ -22,7 +30,7 @@ const Payment = () => {
 
       // 2️⃣ Initialize Razorpay Payment
       const options = {
-        key: "rzp_live_ORwuB2Pzek0Akl",
+        key: "rzp_test_v521ErjMrzxocB",
         amount: orderData.order.amount,
         currency: orderData.order.currency,
         name: "Vikas Gupta",
@@ -36,10 +44,10 @@ const Payment = () => {
             body: JSON.stringify({
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: orderData.order.id, // Ensure order ID matches
-              user_id: "43", property_id :"53"
+              Inv_Id:"vikas1"
             }),
           });
-
+          console.log(response)
           const verifyData = await verifyResponse.json();
           if (verifyData.success) {
             alert("Payment verified successfully!");
@@ -47,8 +55,8 @@ const Payment = () => {
             alert("Payment verification failed: " + verifyData.message);
           }
         },
-        prefill: { name: "Testing", email: "Testing@qtiminds.com", contact: 81748777531 },
-        theme: { color: "#3399cc" },
+        prefill: { name: "Testing", email: "Testing@qtiminds.com", contact: 8174877531 },
+        theme: { color: "red" },
       };
 console.log("options: ", options);
       const rzp = new window.Razorpay(options);
