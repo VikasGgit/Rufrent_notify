@@ -1,30 +1,36 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-
-
-import LoginSignup from "./components/LoginSignup";
-import Payment from "./components/Payment";
-import NotificationComponent from "./components/Notification";
-
-// import Payment from "./components/Payment";
-// import GoogleLogin from "./components/GoogleLogin";
-// import EmailVerification from './components/EmailVerification'
-// import LoginSignup from "./components/LoginSignup";
-
-const PrivateRoute = ({ children }) => {
-  const user = auth.currentUser; // Get the current authenticated user
-  return user ? children : <Navigate to="/" />; // Redirect to login if not logged in
-};
+import React , {useState} from "react";
+import LoginSignup from "./components/LoginSignup"
+import ChatbotModal from "./components/ChatBot2";
+import Payment from "./components/Payment"
 
 const App = () => {
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+
   return (
-   <>
-   <NotificationComponent userId='1'  />
-   <NotificationComponent userId='2'  />
-   <NotificationComponent userId='3'  />
-   <NotificationComponent userId='4'  />
-   <NotificationComponent userId='5'  />
-   </>
+    <div className="min-h-screen bg-gray-100">
+      {/* Header */}
+<LoginSignup/>
+<Payment/>
+      
+      <header className="p-4 bg-[#001433] text-white">
+        <h1 className="text-2xl font-bold">Welcome to RufRent</h1>
+      </header>
+
+
+      {/* Chatbot Button */}
+      <button
+        onClick={() => setIsChatbotOpen(true)}
+        className="fixed p-4 text-white transition-colors duration-200 bg-blue-500 rounded-full shadow-lg bottom-10 right-10 hover:bg-blue-600"
+      >
+        💬 Chat
+      </button>
+
+      {/* Chatbot Modal */}
+      <ChatbotModal
+        isOpen={isChatbotOpen}
+        onClose={() => setIsChatbotOpen(false)}
+      />
+    </div>
   );
 };
 
